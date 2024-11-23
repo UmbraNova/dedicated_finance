@@ -258,8 +258,40 @@ hr {
 #login-window-content > input {
     margin-bottom: 10px;
 }
-
 /* login END */
+
+/* item START */
+.itemEl {
+    width: 100%;
+}
+
+.itemContainer {
+    display: flex;
+    max-height: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemContainer > .itemName {
+    /* background-color: red; */
+    width: 100%;
+    text-align: start;
+}
+
+.itemContainer > .itemInputAmount {
+    background-color: green;
+    /* max-height: 20px; */
+    max-width: 80px;
+}
+
+.itemContainer > .itemTotalAmount {
+    background-color: blue;
+}
+
+
+/* item END */
+
+
 
 @keyframes dancing {
     0% {

@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
+    // place your DB URL here
 }
 
 // DB = database
@@ -43,7 +44,7 @@ let userIDinDB = ""
 const usersInGroupDB = ref(database, `${groupNameLS}NkvAEtqN5`)
 const itemsListInDB = ref(database, groupNameLS)
 let groupArrayDB = []
-const itemColors = ["#FFFDF8", "#FFC0D9", "#6DB9EF", "#ED8C35"]
+const itemColors = ["#FFFDF8", "#FFC0D9", "#6DB9EF", "#ED8C35", "#ED2939", "#007FFF", "#80FF00", "#8A2BE2"]
 
 
 // const mainColor = document.documentElement.style.getPropertyValue("--main-bg-color")
@@ -355,6 +356,7 @@ function appendToGroupListEl(item) {
     let itemID = item[0]
     let itemValue = item[1]
     let newEl = document.createElement("li")
+    newEl.className = "itemEl"
     
     // if (typeof itemValue === 'string' || itemValue instanceof String) {
         // newEl.textContent = itemValue
@@ -362,6 +364,7 @@ function appendToGroupListEl(item) {
 
 
     let itemContainer = document.createElement("div")
+    itemContainer.className = "itemContainer"
 
     let itemName = document.createElement("p")
     itemName.className = "itemName"
@@ -369,18 +372,20 @@ function appendToGroupListEl(item) {
 
     let itemInputAmount = document.createElement("input")
     itemInputAmount.className = "itemInputAmount"
-    itemInputAmount.setAttribute("id", "itemInputAmount")
+    // itemInputAmount.setAttribute("id", "itemInputAmount")  # multiple id's!
 
+    let itemTotalAmount = document.createElement("p")
+    itemTotalAmount.className = "itemTotalAmount"
 
     itemContainer.appendChild(itemName)
     itemContainer.appendChild(itemInputAmount)
+    itemContainer.appendChild(itemTotalAmount)
     newEl.appendChild(itemContainer)
 
 
     // newEl.textContent = itemValue.name
-    newEl.style.backgroundColor = itemValue.color
     // }
-   
+    newEl.style.backgroundColor = itemValue.color
     newEl.addEventListener("click", function() {
         playElAnimation(newEl)
         if (removeBtn.checked) {
@@ -392,13 +397,8 @@ function appendToGroupListEl(item) {
                 newIndex = 0
             }
             let exactItemLocationInDB = ref(database, `${groupNameLS}/${itemID}`)
-
-            document.getElementById("itemInputAmount").addEventListener("focus", ()=>{
-                alert("works")
-            })
-            setTimeout(()=>{
-                update(exactItemLocationInDB, {color: itemColors[newIndex], index: newIndex})
-            },1000)
+            
+            update(exactItemLocationInDB, {color: itemColors[newIndex], index: newIndex})
         }
     })
     groupListEl.append(newEl)
