@@ -2,7 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
-    databaseURL: 
 }
 
 // DB = database
@@ -362,15 +361,23 @@ function appendToGroupListEl(item) {
         // } else {
 
 
-    let itemElContainer = document.createElement("")
+    let itemContainer = document.createElement("div")
 
-    let newElInput = document.createElement("input")
-    newElInput.className = "itemAmount"
+    let itemName = document.createElement("p")
+    itemName.className = "itemName"
+    itemName.textContent = itemValue.name
 
-    newEl.appendChild()
+    let itemInputAmount = document.createElement("input")
+    itemInputAmount.className = "itemInputAmount"
+    itemInputAmount.setAttribute("id", "itemInputAmount")
 
 
-    newEl.textContent = itemValue.name
+    itemContainer.appendChild(itemName)
+    itemContainer.appendChild(itemInputAmount)
+    newEl.appendChild(itemContainer)
+
+
+    // newEl.textContent = itemValue.name
     newEl.style.backgroundColor = itemValue.color
     // }
    
@@ -385,7 +392,13 @@ function appendToGroupListEl(item) {
                 newIndex = 0
             }
             let exactItemLocationInDB = ref(database, `${groupNameLS}/${itemID}`)
-            update(exactItemLocationInDB, {color: itemColors[newIndex], index: newIndex})
+
+            document.getElementById("itemInputAmount").addEventListener("focus", ()=>{
+                alert("works")
+            })
+            setTimeout(()=>{
+                update(exactItemLocationInDB, {color: itemColors[newIndex], index: newIndex})
+            },1000)
         }
     })
     groupListEl.append(newEl)
