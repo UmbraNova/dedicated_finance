@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"> -->
+        <title>Dedicated Finance</title>
+        <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+
+        <!-- icons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+
+        <!-- css -->
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <!-- <div class="user-login-container"> -->
+                <div>
+                    <!-- enter group container START -->
+                    <div id="login-container">
+                        <div class="name-and-group">
+                            <input id="user-name" type="text" placeholder="Your name...">
+                            <button id="open-login-window-btn">Login group</button>
+                        </div>
+                        <div id="login-window">
+                            <div id="login-window-content">
+                                <button id="exit-login-window">✕</button>
+                                <p>Enter a group name and password</p>
+                                <input id="group-name-field" placeholder="group name..." type="text" required>
+                                <input id="password-field" placeholder="password..." type="password" required>
+                                <div class="buttons-container">
+                                    <button id="enter-group-button">Enter group</button>
+                                    <button id="new-group-button">Create group</button>
+                                </div>
+                                <div class="colors-container">
+                                    <button id="background-colors-btn">Background</button>
+                                    <button id="main-colors-btn">Main color</button>
+                                </div>
+                                <button id="exit-group-button">Exit group</button>
+                                <p id="login-error-info-el"></p>
+                                <hr>
+                                <ul class="info-section">
+                                    <li>Create the group using a name and a password.</li>
+                                    <li>If the group already exists, try another name.</li>
+                                    <li>If you already have a group, enter the group name and the password.</li>
+                                    <li>Make sure to type it correctly.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- enter group container END -->
+                </div>
+                <img class="app-image" src="../../assets/the_line.png">
+                <input type="text" id="input-field" placeholder="Example...">
+
+                <div class="buttons-container">
+                    <label for="remove-btn" id="label-for-remove-btn"><input id="remove-btn" type="checkbox">Remove</label>
+                    <button id="add-button">Add to List</button>
+                </div>
+
+                <nav style="display: none;">  <!-- display: none -->
+                    <label for="on-touch"><span id="people-in-group">People in group</span></label>
+                    <input type="checkbox" id="on-touch">
+                    <ul id="people-dropdown-menu">
+                    </ul>
+                </nav>
+
+                <ul id="group-list">
+                </ul>
+            </div>
+
+            <!-- chat container START -->
+            <!-- <div class="chat-container">
+                <input type="text" id="chat-input-field" placeholder="Write something...">
+                <button id="send-button">Send</button>
+                <ul id="chat-history">
+                </ul>
+            </div> -->
+            <!-- chat container END -->
+
+        </main>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
