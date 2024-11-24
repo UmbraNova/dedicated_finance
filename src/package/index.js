@@ -355,52 +355,85 @@ function playElAnimation(elem) {
 function appendToGroupListEl(item) {
     let itemID = item[0]
     let itemValue = item[1]
-    let newEl = document.createElement("li")
-    newEl.className = "itemEl"
-    
     // if (typeof itemValue === 'string' || itemValue instanceof String) {
         // newEl.textContent = itemValue
         // } else {
-
-
-    let itemContainer = document.createElement("div")
-    itemContainer.className = "itemContainer"
-
-    let itemName = document.createElement("p")
-    itemName.className = "itemName"
-    itemName.textContent = itemValue.name
-
-    let itemInputAmount = document.createElement("input")
-    itemInputAmount.className = "itemInputAmount"
-    // itemInputAmount.setAttribute("id", "itemInputAmount")  # multiple id's!
-
-    let itemTotalAmount = document.createElement("p")
-    itemTotalAmount.className = "itemTotalAmount"
-
-    itemContainer.appendChild(itemName)
-    itemContainer.appendChild(itemInputAmount)
-    itemContainer.appendChild(itemTotalAmount)
-    newEl.appendChild(itemContainer)
+            
+        let newEl = document.createElement("li")
+        newEl.className = "itemEl"
+        
+        let itemContainerEl = document.createElement("div")
+        itemContainerEl.className = "itemContainer"
+        
+        let itemNameEl = document.createElement("p")
+        itemNameEl.className = "itemName"
+        itemNameEl.textContent = itemValue.name
+        
+        let itemInputAmountEl = document.createElement("input")
+        itemInputAmountEl.className = "itemInputAmount"
+        itemInputAmountEl.setAttribute("type", "number")
+        itemInputAmountEl.setAttribute("tabindex", "-1")
+        
+        let itemTotalAmountEl = document.createElement("p")
+        itemTotalAmountEl.className = "itemTotalAmount"
+        itemTotalAmountEl.textContent = itemValue.totalAmount
+        
+        itemContainerEl.appendChild(itemNameEl)
+        itemContainerEl.appendChild(itemInputAmountEl)
+    itemContainerEl.appendChild(itemTotalAmountEl)
+    newEl.appendChild(itemContainerEl)
 
 
     // newEl.textContent = itemValue.name
     // }
+    let exactItemLocationInDB = ref(database, `${groupNameLS}/${itemID}`)
+
+    // change color
     newEl.style.backgroundColor = itemValue.color
+    itemNameEl.addEventListener("click", ()=>{
+        let newIndex = itemValue.index + 1
+        if (newIndex > itemColors.length - 1) {
+            newIndex = 0
+        }
+        update(exactItemLocationInDB, {color: itemColors[newIndex], index: newIndex})
+        // playElAnimation(newEl)
+    })
+    
+    // add amount
+    itemTotalAmountEl.addEventListener("click", ()=>{
+        let itemInputValue = Number(itemInputAmountEl.value)
+        let totalAmount = 0
+        
+        if (itemValue.totalAmount != undefined) {
+            totalAmount = itemInputValue + Number(itemValue.totalAmount)
+        } else {
+            totalAmount = itemInputValue
+        }
+        
+        // console.log(itemInputValue + " - itemInputValue")
+        // console.log(itemValue.totalAmount + " - itemValue.totalAmount")
+        
+        if (itemInputValue != 0) {
+            itemInputValue = itemInputValue.toFixed(2)
+            totalAmount = totalAmount.toFixed(2)
+            update(exactItemLocationInDB, {"itemAmount": itemInputValue, "totalAmount": totalAmount})
+        }
+    })
+    
+    // removes el
     newEl.addEventListener("click", function() {
-        playElAnimation(newEl)
         if (removeBtn.checked) {
             let exactItemLocationInDB = ref(database, `${groupNameLS}/${itemID}`) 
             remove(exactItemLocationInDB)
-        } else {
-            let newIndex = itemValue.index + 1
-            if (newIndex > itemColors.length - 1) {
-                newIndex = 0
-            }
-            let exactItemLocationInDB = ref(database, `${groupNameLS}/${itemID}`)
-            
-            update(exactItemLocationInDB, {color: itemColors[newIndex], index: newIndex})
         }
+        playElAnimation(newEl)
     })
+    
     groupListEl.append(newEl)
 }
+
+
+
+
+
 

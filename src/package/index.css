@@ -37,7 +37,7 @@ html, body {
 }
 
 #login-container {
-    margin-top: 12px;
+    margin-top: 7px;
 }
 
 input {
@@ -147,24 +147,59 @@ p {
     text-shadow: 0px 1px 4px rgba(255, 255, 255, 0.2);
 }
 
+/* group-list Items */
+
+
+/* item START */
 #group-list {
     list-style-type: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 2px;
+    margin-top: 0;
 }
 
 #group-list li {
-    font-size: 20px;
+    font-size: 14px;
     /* background-color: #F3EDC8; */
     background-color: #FFFDF8;
     border-radius: var(--radius);
     flex-grow: 1;
-    text-align: center;
+    /* text-align: center; */
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    padding: 4px;
 }
+.itemEl {
+    width: 100%;
+}
+
+.itemContainer {
+    display: flex;
+    max-height: 22px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemContainer > .itemName {
+    width: 100%;
+    text-align: start;
+    transform: scaleX(1.1);
+}
+
+.itemContainer > .itemInputAmount {
+    background-color: rgba(0, 0, 0, 0.434);
+    max-width: 70px;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.itemContainer > .itemTotalAmount {
+    /* background-color: rgba(0, 0, 0, 0.434); */
+    min-width: 70px;
+}
+
+/* item END */
 
 /* dropdown START */
 nav {
@@ -259,38 +294,6 @@ hr {
     margin-bottom: 10px;
 }
 /* login END */
-
-/* item START */
-.itemEl {
-    width: 100%;
-}
-
-.itemContainer {
-    display: flex;
-    max-height: 25px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.itemContainer > .itemName {
-    /* background-color: red; */
-    width: 100%;
-    text-align: start;
-}
-
-.itemContainer > .itemInputAmount {
-    background-color: green;
-    /* max-height: 20px; */
-    max-width: 80px;
-}
-
-.itemContainer > .itemTotalAmount {
-    background-color: blue;
-}
-
-
-/* item END */
-
 
 
 @keyframes dancing {
