@@ -65,16 +65,34 @@
                     <label for="remove-btn" id="label-for-remove-btn"><input id="remove-btn" type="checkbox">Remove</label>
                     <button id="add-button">Add to List</button>
                 </div>
-
-                <nav style="display: none;">  <!-- display: none -->
-                    <label for="on-touch"><span id="people-in-group">People in group</span></label>
+                <nav id="financial-situation">
+                    <label for="on-touch"><span id="people-in-group">Financial Situation</span></label>
                     <input type="checkbox" id="on-touch">
                     <ul id="people-dropdown-menu">
+                        <!-- financial situation -->
+                        <div class="show-all-data">
+                            <!-- this month data -->
+                            <p id="this-month-income">53800</p>  <!-- this month income -->
+                            <p id="average-monthly-income">51800</p>  <!-- average income, every month income divided by nr of months -->
+                            <p id="this-month-spent">12000</p>  <!-- monthly spent -->
+                            <p id="average-mothly-spent">12300</p>  <!-- average mothly spent -->
+                            
+                            <!-- average general data -->
+                            <p id="income-by-hour">103</p>  <!-- income by hour -->
+                            <p id="total-income">123000</p>  <!-- total income ever -->
+                            <p id="total-spent">32333</p>  <!-- total spent ever -->
+                            <p id="total-saved">80000</p>  <!-- total saved ever -->
+                        </div>
                     </ul>
                 </nav>
 
+
+                <!-- spending -->
                 <ul id="group-list">
                 </ul>
+
+                <!-- end of the month reset spending button -->
+                <button>end of the month</button>  <!-- TODO: should reset all data except saved, saved should be stored as new income-->
             </div>
 
             <!-- chat container START -->
